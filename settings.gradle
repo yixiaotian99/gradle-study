@@ -1,0 +1,8 @@
+
+//父项目名称
+rootProject.name = 'gradle-study'
+
+
+//子项目名称
+include "gradle-web"
+include "gradle-service"

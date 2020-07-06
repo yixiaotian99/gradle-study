@@ -1,0 +1,25 @@
+
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+//test {
+//    useJUnitPlatform()
+//}
+
+
+//先声明成非 springboot 可运行项目
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}

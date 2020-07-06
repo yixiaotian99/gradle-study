@@ -1,0 +1,32 @@
+
+
+//指定依赖
+dependencies {
+    //引用本地项目
+    compile project(':gradle-service')
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+
+}
+
+
+
+//// 单个模块打 fatjar 包的配置
+//bootJar {
+////    manifest {
+////        attributes 'Start-Class': 'com.xiao.gradle.web.GradleWebApplication'
+////    }
+//
+//    from {
+//        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+//    }
+//}
+

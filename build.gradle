@@ -1,0 +1,67 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.3.1.RELEASE"
+    }
+}
+
+//定义插件，然后使用 apply plugin 使用插件
+plugins {
+    id "org.springframework.boot" version "2.3.1.RELEASE"
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+}
+
+
+
+//所有子项目的插件配置，不包括 root 项目
+subprojects {
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'java'
+    apply plugin: 'idea'
+}
+
+
+//所有项目的配置，包括 root + clild project
+allprojects {
+
+    group 'com.xiao'
+    version '2.0-SNAPSHOT'
+
+    sourceCompatibility = '1.8'
+    targetCompatibility = 1.8
+
+    //仓库地址，先从 mavenLocal 本地找，然后从中央仓库找
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    //编码
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+}
+
+
+//仅在编译时依赖，此处为lombok使用，相关注解在编译时生成getter、setter等
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+
+//先声明成非 springboot 可运行项目
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
