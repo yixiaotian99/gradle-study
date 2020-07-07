@@ -1,9 +1,4 @@
-
-
 dependencies {
-    //引用本地项目
-    compile project(':gradle-dao')
-
     implementation 'org.springframework.boot:spring-boot-starter'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -11,6 +6,12 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
+
+    compile group: 'com.baomidou', name: 'mybatis-plus-boot-starter', version: '3.3.1'
+//    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.47'
+
+
 }
 
 //test {

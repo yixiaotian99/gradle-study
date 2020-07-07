@@ -6,3 +6,4 @@ rootProject.name = 'gradle-study'
 //子项目名称
 include "gradle-web"
 include "gradle-service"
+include "gradle-dao"
